@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sample 3 — Bento Grid · Samrat Malisetti</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #f4f4f0;
+    --ink: #18181b;
+    --muted: #71717a;
+    --card: #ffffff;
+    --line: #e4e4e7;
+    --lime: #d9f99d;
+    --violet: #ddd6fe;
+    --sky: #bae6fd;
+    --peach: #fed7aa;
+    --r: 20px;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: var(--bg); color: var(--ink);
+    font-family: 'Inter', sans-serif; line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap { max-width: 1080px; margin: 0 auto; padding: 24px; }
+
+  nav {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 12px 4px 28px;
+  }
+  nav .logo { font-weight: 800; font-size: 18px; letter-spacing: -0.5px; }
+  nav .links a {
+    color: var(--ink); text-decoration: none; margin-left: 8px; font-size: 14px; font-weight: 500;
+    padding: 8px 16px; border-radius: 99px;
+  }
+  nav .links a:hover { background: var(--card); }
+  nav .links a.cta { background: var(--ink); color: #fff; }
+
+  .bento {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+  }
+  .cell {
+    background: var(--card); border-radius: var(--r); padding: 28px;
+    border: 1px solid var(--line);
+    transition: transform .15s ease;
+  }
+  .cell:hover { transform: scale(1.012); }
+
+  .hero { grid-column: span 3; grid-row: span 2; display: flex; flex-direction: column; justify-content: center; }
+  .hero .hi { font-size: 15px; font-weight: 600; color: var(--muted); margin-bottom: 14px; }
+  .hero h1 { font-size: 46px; font-weight: 800; letter-spacing: -1.5px; line-height: 1.08; }
+  .hero h1 mark { background: var(--lime); padding: 0 8px; border-radius: 8px; }
+  .hero p { margin-top: 18px; color: var(--muted); font-size: 16px; max-width: 520px; }
+
+  .photo { grid-column: span 1; grid-row: span 2; padding: 0; overflow: hidden; position: relative;
+    background: linear-gradient(160deg, var(--violet), var(--sky)); min-height: 260px;
+    display: flex; align-items: flex-end; }
+  .photo .ph-label { padding: 16px 20px; font-weight: 600; font-size: 14px; background: rgba(255,255,255,.8); width: 100%; backdrop-filter: blur(4px); }
+
+  .featured {
+    grid-column: span 4; background: var(--ink); color: #fff; border: none;
+    display: grid; grid-template-columns: 1.4fr 1fr; gap: 28px; padding: 36px;
+  }
+  .featured .badge {
+    display: inline-block; background: var(--lime); color: var(--ink);
+    font-size: 12px; font-weight: 700; padding: 5px 12px; border-radius: 99px; margin-bottom: 16px;
+  }
+  .featured h2 { font-size: 30px; font-weight: 800; letter-spacing: -0.5px; margin-bottom: 12px; }
+  .featured p { color: #a1a1aa; font-size: 15px; }
+  .featured .stats { display: flex; flex-direction: column; gap: 14px; justify-content: center; }
+  .featured .stat { background: #27272a; border-radius: 14px; padding: 14px 20px; display: flex; align-items: baseline; gap: 10px; }
+  .featured .stat b { font-size: 24px; }
+  .featured .stat span { font-size: 13px; color: #a1a1aa; }
+
+  .proj { grid-column: span 2; }
+  .proj .chip { display: inline-block; font-size: 12px; font-weight: 600; padding: 4px 12px; border-radius: 99px; margin-bottom: 14px; }
+  .proj h3 { font-size: 20px; font-weight: 700; letter-spacing: -0.3px; margin-bottom: 8px; }
+  .proj p { color: var(--muted); font-size: 14px; }
+  .proj .tags { margin-top: 14px; font-size: 12.5px; color: var(--muted); font-weight: 500; }
+
+  .xp-cell { grid-column: span 2; grid-row: span 2; }
+  .xp-cell h2, .skills h2 { font-size: 14px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; color: var(--muted); margin-bottom: 20px; }
+  .job { padding: 14px 0; border-bottom: 1px solid var(--line); }
+  .job:last-child { border: none; }
+  .job .top { display: flex; justify-content: space-between; align-items: baseline; }
+  .job b { font-size: 15px; }
+  .job .co { color: var(--muted); font-size: 13.5px; }
+  .job .when { font-size: 12.5px; color: var(--muted); white-space: nowrap; }
+
+  .skills { grid-column: span 2; grid-row: span 2; }
+  .skills .cloud { display: flex; flex-wrap: wrap; gap: 8px; }
+  .skill {
+    font-size: 13.5px; font-weight: 500; padding: 7px 14px; border-radius: 99px; border: 1px solid var(--line);
+  }
+  .skill.hot { background: var(--lime); border-color: transparent; font-weight: 600; }
+
+  .contact {
+    grid-column: span 4; background: var(--lime); border: none; text-align: center; padding: 52px 28px;
+  }
+  .contact h2 { font-size: 34px; font-weight: 800; letter-spacing: -1px; margin-bottom: 8px; }
+  .contact p { color: #3f3f46; margin-bottom: 22px; }
+  .contact a.mail {
+    display: inline-block; background: var(--ink); color: #fff; text-decoration: none;
+    font-weight: 600; padding: 14px 28px; border-radius: 99px; font-size: 15px;
+  }
+  .contact .socials { margin-top: 22px; font-size: 14px; font-weight: 500; }
+  .contact .socials a { color: var(--ink); margin: 0 10px; }
+
+  @media (max-width: 760px) {
+    .bento { grid-template-columns: 1fr 1fr; }
+    .hero { grid-column: span 2; }
+    .photo { grid-column: span 2; grid-row: span 1; min-height: 180px; }
+    .featured { grid-column: span 2; grid-template-columns: 1fr; }
+    .hero h1 { font-size: 32px; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <nav>
+    <div class="logo">SM.</div>
+    <div class="links">
+      <a href="#">Work</a><a href="#">About</a><a href="#" class="cta">Resume</a>
+    </div>
+  </nav>
+
+  <div class="bento">
+
+    <div class="cell hero">
+      <div class="hi">👋 Hi, I'm Samrat Malisetti</div>
+      <h1>I build <mark>voice AI</mark> &amp; full-stack products people actually use.</h1>
+      <p>Software engineer across web, mobile, and cloud. M.S. Computer Science. Currently exploring applied AI — most recently a multilingual insurance voice agent at a YC hackathon.</p>
+    </div>
+
+    <div class="cell photo">
+      <div class="ph-label">📍 SF Bay Area</div>
+    </div>
+
+    <div class="cell featured">
+      <div>
+        <span class="badge">★ FEATURED — YC HACKATHON</span>
+        <h2>Amparo AI</h2>
+        <p>A multilingual voice agent that compares health-insurance plans over the phone. Ask in any language → 24 parallel document lookups → cited, personalized cost comparison in under 2 seconds. Caught a "cheap" plan hiding $25,000 in out-of-network costs.</p>
+      </div>
+      <div class="stats">
+        <div class="stat"><b>&lt;100ms</b><span>retrieval latency</span></div>
+        <div class="stat"><b>24+</b><span>concurrent lookups per turn</span></div>
+        <div class="stat"><b>40+</b><span>languages spoken</span></div>
+      </div>
+    </div>
+
+    <div class="cell proj">
+      <span class="chip" style="background: var(--sky);">Full-stack</span>
+      <h3>Payment App</h3>
+      <p>Secure money transfers with JWT auth and a clean, fast UI.</p>
+      <div class="tags">React · Node.js · MongoDB · Express</div>
+    </div>
+
+    <div class="cell proj">
+      <span class="chip" style="background: var(--peach);">Mobile · Hackathon</span>
+      <h3>DCMH Mobile</h3>
+      <p>Inventory &amp; donations app for a housing nonprofit, with real-time alerts.</p>
+      <div class="tags">React Native · Supabase · Expo</div>
+    </div>
+
+    <div class="cell proj">
+      <span class="chip" style="background: var(--violet);">Deep dive</span>
+      <h3>ReactDOM from scratch</h3>
+      <p>React's reconciliation + fiber rendering, reimplemented in vanilla JS.</p>
+      <div class="tags">JavaScript · ES6</div>
+    </div>
+
+    <div class="cell proj">
+      <span class="chip" style="background: var(--lime);">Data viz</span>
+      <h3>Analytics Dashboard</h3>
+      <p>Real-time media insights with interactive charts and responsive design.</p>
+      <div class="tags">Next.js · shadcn/ui · Recharts · Zod</div>
+    </div>
+
+    <div class="cell xp-cell">
+      <h2>Experience</h2>
+      <div class="job">
+        <div class="top"><b>Full Stack Engineer</b><span class="when">2024–25</span></div>
+        <div class="co">GorgeousTV — GCP→Azure migration, K8s security</div>
+      </div>
+      <div class="job">
+        <div class="top"><b>Open Source</b><span class="when">2022–24</span></div>
+        <div class="co">SuperMemory, FiguringOut, Wordcorn</div>
+      </div>
+      <div class="job">
+        <div class="top"><b>Software Engineer</b><span class="when">2021–22</span></div>
+        <div class="co">ZeMoSo — GraphQL latency −40%, offline-first mobile</div>
+      </div>
+      <div class="job">
+        <div class="top"><b>Software Engineer</b><span class="when">2020–21</span></div>
+        <div class="co">KeeStep — NestJS, RBAC, real-time WebSockets</div>
+      </div>
+    </div>
+
+    <div class="cell skills">
+      <h2>Toolbox</h2>
+      <div class="cloud">
+        <span class="skill hot">TypeScript</span>
+        <span class="skill hot">React / Next.js</span>
+        <span class="skill hot">Python</span>
+        <span class="skill hot">Voice AI / LiveKit</span>
+        <span class="skill">React Native</span>
+        <span class="skill">Node.js</span>
+        <span class="skill">PostgreSQL</span>
+        <span class="skill">MongoDB</span>
+        <span class="skill">AWS</span>
+        <span class="skill">GCP</span>
+        <span class="skill">Azure</span>
+        <span class="skill">Kubernetes</span>
+        <span class="skill">Docker</span>
+        <span class="skill">GraphQL</span>
+      </div>
+    </div>
+
+    <div class="cell contact">
+      <h2>Have an idea? Let's talk.</h2>
+      <p>Open to full-time roles and collaborations.</p>
+      <a class="mail" href="mailto:samratmalisetti@gmail.com">samratmalisetti@gmail.com</a>
+      <div class="socials"><a href="#">GitHub</a> · <a href="#">LinkedIn</a> · <a href="#">Twitter</a></div>
+    </div>
+
+  </div>
+</div>
+</body>
+</html>

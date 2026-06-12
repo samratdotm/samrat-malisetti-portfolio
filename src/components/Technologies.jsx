@@ -1,119 +1,101 @@
 import React from "react";
-import { RiReactjsLine } from "react-icons/ri";
-import { RiNextjsLine } from "react-icons/ri";
-import { SiMongodb } from "react-icons/si";
-import { RiTailwindCssLine } from "react-icons/ri";
-import { RiNodejsLine } from "react-icons/ri";
-import { SiPostgresql } from "react-icons/si";
-import { FaDocker } from "react-icons/fa";
-import { FaAws } from "react-icons/fa";
-import { SiMysql } from "react-icons/si";
+import { motion } from "motion/react";
+import { Prompt } from "./TerminalWindow";
 
-import { motion } from "framer-motion";
-
-const iconVariants = (duration) => ({
-  initial: { y: -10 },
-  animate: {
-    y: [10, -10],
-    transition: {
-      duration: duration,
-      ease: "linear",
-      repeat: Infinity,
-      repeatType: "reverse",
-    },
+const skillGroups = [
+  {
+    label: "ai-and-agents/",
+    featured: true,
+    skills: [
+      "LLM Agents (Strands SDK)",
+      "Multi-Agent Orchestration",
+      "AWS Bedrock · AgentCore Memory",
+      "Claude API",
+      "Azure OpenAI",
+      "Gemini Managed Agents",
+      "Voice Agents (LiveKit · STT/TTS)",
+      "RAG & Hybrid Retrieval",
+      "Eval Frameworks",
+      "LLM Observability (Langfuse)",
+      "HITL Guardrails",
+      "Prompt Caching",
+      "MCP",
+    ],
   },
-});
+  {
+    label: "languages/",
+    skills: ["TypeScript", "JavaScript", "Python", "Java", "SQL"],
+  },
+  {
+    label: "frontend-and-mobile/",
+    skills: ["React", "Next.js", "React Native", "Expo", "TailwindCSS"],
+  },
+  {
+    label: "backend/",
+    skills: [
+      "Node.js",
+      "Express",
+      "NestJS",
+      "FastAPI",
+      "GraphQL",
+      "WebRTC",
+      "PostgreSQL",
+      "MongoDB",
+    ],
+  },
+  {
+    label: "cloud-and-devops/",
+    skills: ["AWS", "GCP", "Azure", "Kubernetes", "Docker", "CI/CD (Concourse)"],
+  },
+];
 
 export const Technologies = () => {
   return (
-    <div className="border-b border-neutral-900 pb-24">
-      <motion.h1
-        whileInView={{ opacity: 1, y: 0 }}
-        initial={{ opacity: 0, y: -100 }}
-        transition={{ duration: 1.5 }}
-        className="my-20 text-center text-4xl"
-      >
-        Technologies
-      </motion.h1>
-      <motion.div
-        whileInView={{ opacity: 1, x: 0 }}
-        initial={{ opacity: 0, x: -100 }}
-        transition={{ duration: 1.5 }}
-        className="flex flex-wrap items-center justify-center gap-4"
-      >
-        <motion.div
-          variants={iconVariants(2.5)}
-          initial="initial"
-          animate="animate"
-          className="rounded-2xl border-4 border-neutral-800 p-4"
-        >
-          <RiReactjsLine className="text-7xl text-cyan-400" />
-        </motion.div>
-        <motion.div
-          variants={iconVariants(3.0)}
-          initial="initial"
-          animate="animate"
-          className="rounded-2xl border-4 border-neutral-800 p-4"
-        >
-          <RiNextjsLine className="text-7xl" />
-        </motion.div>
-        <motion.div
-          variants={iconVariants(3.5)}
-          animate="animate"
-          initial="initial"
-          className="rounded-2xl border-4 border-neutral-800 p-4"
-        >
-          <SiMongodb className="text-7xl text-green-500" />
-        </motion.div>
-        <motion.div
-          variants={iconVariants(4)}
-          initial="initial"
-          animate="animate"
-          className="rounded-2xl border-4 border-neutral-800 p-4"
-        >
-          <RiTailwindCssLine className="text-7xl text-cyan-400" />
-        </motion.div>
-        <motion.div
-          variants={iconVariants(4.5)}
-          initial="initial"
-          animate="animate"
-          className="rounded-2xl border-4 border-neutral-800 p-4"
-        >
-          <RiNodejsLine className="text-7xl text-green-500" />
-        </motion.div>
-        <motion.div
-          variants={iconVariants(5)}
-          initial="initial"
-          animate="animate"
-          className="rounded-2xl border-4 border-neutral-800 p-4"
-        >
-          <SiPostgresql className="text-7xl text-sky-500" />
-        </motion.div>
-        <motion.div
-          variants={iconVariants(2.5)}
-          initial="initial"
-          animate="animate"
-          className="rounded-2xl border-4 border-neutral-800 p-4"
-        >
-          <FaDocker className="text-7xl text-cyan-300" />
-        </motion.div>
-        <motion.div
-          variants={iconVariants(3)}
-          initial="initial"
-          animate="animate"
-          className="rounded-2xl border-4 border-neutral-800 p-4"
-        >
-          <FaAws className="text-7xl text-orange-300" />
-        </motion.div>
-        <motion.div
-          variants={iconVariants(3.5)}
-          initial="initial"
-          animate="animate"
-          className="rounded-2xl border-4 border-neutral-800 p-4"
-        >
-          <SiMysql className="text-7xl text-cyan-400" />
-        </motion.div>
-      </motion.div>
-    </div>
+    <section>
+      <Prompt id="skills" command="tree skills/" />
+      <div className="grid gap-3.5 sm:grid-cols-2">
+        {skillGroups.map((group) => (
+          <motion.div
+            key={group.label}
+            initial={{ opacity: 0, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-40px" }}
+            transition={{ duration: 0.35 }}
+            className={`rounded-[10px] border bg-term-panel px-5 py-4 ${
+              group.featured
+                ? "border-term-green/40 sm:col-span-2"
+                : "border-term-line"
+            }`}
+          >
+            <div
+              className={`mb-2.5 text-[13px] font-bold ${
+                group.featured ? "text-term-green" : "text-term-pink"
+              }`}
+            >
+              {group.label}
+              {group.featured && (
+                <span className="ml-2 font-normal text-term-faint">
+                  # what I do best
+                </span>
+              )}
+            </div>
+            <div className="flex flex-wrap gap-2">
+              {group.skills.map((skill) => (
+                <span
+                  key={skill}
+                  className={`rounded-md border px-2.5 py-1 text-xs ${
+                    group.featured
+                      ? "border-term-green/30 bg-term-bg text-term-ink"
+                      : "border-term-line bg-term-bg text-term-ink"
+                  }`}
+                >
+                  {skill}
+                </span>
+              ))}
+            </div>
+          </motion.div>
+        ))}
+      </div>
+    </section>
   );
 };

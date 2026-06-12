@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sample 4 — Terminal · Samrat Malisetti</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0c1117;
+    --panel: #11181f;
+    --line: #1f2a35;
+    --ink: #c9d4dd;
+    --dim: #7d8b99;
+    --green: #3fe081;
+    --amber: #ffc66d;
+    --cyan: #58d6ff;
+    --pink: #ff7eb6;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: var(--bg); color: var(--ink);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 14.5px; line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap { max-width: 780px; margin: 0 auto; padding: 32px 24px 80px; }
+
+  .term {
+    background: var(--panel); border: 1px solid var(--line); border-radius: 12px;
+    overflow: hidden; margin-bottom: 28px;
+    box-shadow: 0 8px 40px rgba(0,0,0,.4);
+  }
+  .term .bar {
+    display: flex; align-items: center; gap: 7px;
+    background: #0a0f14; padding: 11px 16px; border-bottom: 1px solid var(--line);
+  }
+  .term .bar .b { width: 11px; height: 11px; border-radius: 50%; }
+  .term .bar .b:nth-child(1) { background: #ff5f57; }
+  .term .bar .b:nth-child(2) { background: #febc2e; }
+  .term .bar .b:nth-child(3) { background: #28c840; }
+  .term .bar .title { margin-left: 10px; font-size: 12px; color: var(--dim); }
+  .term .body { padding: 24px 26px; }
+
+  .prompt { color: var(--green); }
+  .prompt::before { content: "➜ "; }
+  .path { color: var(--cyan); }
+  .cmd { color: var(--ink); }
+  .out { color: var(--dim); }
+
+  h1 { font-size: 30px; font-weight: 700; color: #fff; margin: 14px 0 6px; }
+  h1 .cursor { display: inline-block; width: 13px; height: 28px; background: var(--green); vertical-align: -3px; animation: blink 1.1s steps(1) infinite; }
+  @keyframes blink { 50% { opacity: 0; } }
+  .role { color: var(--amber); }
+  .tagline { color: var(--dim); margin-top: 10px; max-width: 560px; }
+
+  .nav-row { margin-top: 22px; display: flex; flex-wrap: wrap; gap: 12px; }
+  .nav-row a {
+    color: var(--cyan); text-decoration: none; border: 1px solid var(--line);
+    padding: 7px 16px; border-radius: 8px; font-size: 13px;
+  }
+  .nav-row a:hover { border-color: var(--cyan); background: rgba(88,214,255,.06); }
+  .nav-row a.hot { color: var(--bg); background: var(--green); border-color: var(--green); font-weight: 700; }
+
+  .comment { color: #4a5a68; }
+  .key { color: var(--pink); }
+  .str { color: var(--amber); }
+  .section-cmd { margin: 36px 0 14px; font-size: 14px; }
+
+  .entry { padding: 18px 20px; border: 1px solid var(--line); border-radius: 10px; margin-bottom: 14px; background: var(--panel); }
+  .entry:hover { border-color: var(--green); }
+  .entry .head { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 6px; }
+  .entry .name { color: #fff; font-weight: 700; }
+  .entry .name a { color: inherit; text-decoration: none; }
+  .entry .name a:hover { color: var(--green); }
+  .entry .meta { color: var(--dim); font-size: 12.5px; }
+  .entry .desc { color: var(--dim); font-size: 13.5px; margin-top: 7px; }
+  .entry .desc b { color: var(--ink); font-weight: 500; }
+  .tags { margin-top: 10px; font-size: 12px; color: var(--cyan); }
+  .star { color: var(--amber); }
+
+  table { width: 100%; border-collapse: collapse; font-size: 13px; margin-top: 6px; }
+  td { padding: 8px 10px; border-bottom: 1px solid var(--line); vertical-align: top; }
+  td.y { color: var(--dim); white-space: nowrap; width: 110px; }
+  td.r { color: #fff; font-weight: 500; }
+  td.c { color: var(--amber); }
+
+  .contact-box { text-align: left; }
+  .contact-box a { color: var(--green); text-decoration: none; }
+  .contact-box a:hover { text-decoration: underline; }
+
+  @media (max-width: 560px) { h1 { font-size: 22px; } body { font-size: 13.5px; } }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="term">
+    <div class="bar"><span class="b"></span><span class="b"></span><span class="b"></span><span class="title">samrat@portfolio — zsh</span></div>
+    <div class="body">
+      <div><span class="prompt"></span><span class="path">~</span> <span class="cmd">whoami</span></div>
+      <h1>Samrat Malisetti<span class="cursor"></span></h1>
+      <div class="role">software engineer · voice AI · full-stack · cloud</div>
+      <p class="tagline">I build systems that ship — from multilingual voice agents to payment apps to React internals rebuilt from scratch. M.S. Computer Science.</p>
+      <div class="nav-row">
+        <a href="#projects">./projects</a>
+        <a href="#experience">./experience</a>
+        <a href="#contact">./contact</a>
+        <a href="#" class="hot">resume.pdf ↓</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-cmd" id="projects"><span class="prompt"></span><span class="path">~</span> <span class="cmd">ls projects/ --sort=recent</span></div>
+
+  <div class="entry">
+    <div class="head">
+      <span class="name"><a href="#">amparo-ai</a> <span class="star">★ featured</span></span>
+      <span class="meta">YC hackathon · 2026</span>
+    </div>
+    <p class="desc">Multilingual voice agent for health insurance. Call a number, speak any language → <b>24 parallel doc lookups at &lt;100ms</b> → cited 4-plan cost comparison in &lt;2s. Exposed a "cheap" plan hiding <b>$25k of out-of-network costs</b>.</p>
+    <div class="tags">[livekit] [python] [moss] [nextjs] [minimax-tts] [sip]</div>
+  </div>
+
+  <div class="entry">
+    <div class="head"><span class="name"><a href="#">payment-app</a></span><span class="meta">full-stack</span></div>
+    <p class="desc">Secure money transfers — JWT auth, clean transfer flows, MongoDB persistence.</p>
+    <div class="tags">[react] [nodejs] [express] [mongodb]</div>
+  </div>
+
+  <div class="entry">
+    <div class="head"><span class="name"><a href="#">dcmh-mobile</a></span><span class="meta">HackDavis 2024</span></div>
+    <p class="desc">Inventory + donation tracking for a housing nonprofit, with real-time low-stock alerts.</p>
+    <div class="tags">[react-native] [supabase] [expo]</div>
+  </div>
+
+  <div class="entry">
+    <div class="head"><span class="name"><a href="#">react-dom-implementation</a></span><span class="meta">deep dive</span></div>
+    <p class="desc">React's reconciliation + fiber rendering reimplemented from scratch in vanilla JS.</p>
+    <div class="tags">[javascript] [es6]</div>
+  </div>
+
+  <div class="section-cmd" id="experience"><span class="prompt"></span><span class="path">~</span> <span class="cmd">cat experience.log</span></div>
+
+  <div class="term"><div class="body" style="padding: 14px 18px;">
+    <table>
+      <tr><td class="y">2024–2025</td><td><span class="r">Full Stack Engineer</span> <span class="c">@ GorgeousTV</span><br><span class="out">GCP→Azure migration · K8s DB security · firewall design</span></td></tr>
+      <tr><td class="y">2022–2024</td><td><span class="r">Open Source</span> <span class="c">@ SuperMemory · FiguringOut · Wordcorn</span><br><span class="out">UI/UX · API integration · performance</span></td></tr>
+      <tr><td class="y">2021–2022</td><td><span class="r">Software Engineer</span> <span class="c">@ ZeMoSo</span><br><span class="out">GraphQL latency −40% · offline-first RealmDB · JSON-Schema forms</span></td></tr>
+      <tr><td class="y">2020–2021</td><td><span class="r">Software Engineer</span> <span class="c">@ KeeStep</span><br><span class="out">NestJS · RBAC · real-time WebSockets</span></td></tr>
+    </table>
+  </div></div>
+
+  <div class="section-cmd" id="contact"><span class="prompt"></span><span class="path">~</span> <span class="cmd">contact --all</span></div>
+
+  <div class="term"><div class="body contact-box">
+    <div><span class="key">email</span>:    <a href="mailto:samratmalisetti@gmail.com">samratmalisetti@gmail.com</a></div>
+    <div><span class="key">github</span>:   <a href="#">github.com/malisettisamrat</a></div>
+    <div><span class="key">linkedin</span>: <a href="#">linkedin.com/in/samratmalisetti</a></div>
+    <div><span class="key">status</span>:   <span style="color: var(--green);">● open to opportunities</span></div>
+    <br>
+    <div class="comment"># Let's build something together.</div>
+  </div></div>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sample 1 — Editorial Light · Samrat Malisetti</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #faf8f5;
+    --ink: #1a1815;
+    --muted: #6b6459;
+    --line: #e5e0d8;
+    --accent: #c2410c;
+    --card: #ffffff;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap { max-width: 720px; margin: 0 auto; padding: 0 24px; }
+  h1, h2, h3 { font-family: 'Newsreader', serif; font-weight: 500; }
+
+  nav {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 28px 0; border-bottom: 1px solid var(--line);
+  }
+  nav .logo { font-family: 'Newsreader', serif; font-size: 20px; font-style: italic; }
+  nav .links a {
+    color: var(--muted); text-decoration: none; margin-left: 24px; font-size: 14px;
+  }
+  nav .links a:hover { color: var(--accent); }
+  nav .links a.resume {
+    color: var(--ink); border: 1px solid var(--ink); padding: 6px 14px; border-radius: 99px;
+  }
+
+  header { padding: 88px 0 72px; }
+  header h1 { font-size: 52px; line-height: 1.1; letter-spacing: -0.5px; margin-bottom: 20px; }
+  header h1 em { color: var(--accent); font-style: italic; }
+  header p { font-size: 18px; color: var(--muted); max-width: 540px; }
+  header .meta { margin-top: 28px; font-size: 14px; color: var(--muted); display: flex; gap: 20px; }
+  header .meta span::before { content: "— "; }
+
+  section { padding: 56px 0; border-top: 1px solid var(--line); }
+  .section-label {
+    font-size: 12px; text-transform: uppercase; letter-spacing: 2px;
+    color: var(--accent); font-weight: 600; margin-bottom: 32px;
+  }
+
+  .project {
+    display: grid; grid-template-columns: 1fr; gap: 8px;
+    padding: 24px; margin: 0 -24px 16px; border-radius: 12px;
+    transition: background .2s;
+  }
+  .project:hover { background: var(--card); box-shadow: 0 1px 4px rgba(0,0,0,.06); }
+  .project h3 { font-size: 24px; }
+  .project h3 a { color: inherit; text-decoration: none; }
+  .project h3 a:hover { color: var(--accent); }
+  .project .desc { color: var(--muted); font-size: 15px; max-width: 560px; }
+  .project .tags { margin-top: 8px; display: flex; flex-wrap: wrap; gap: 8px; }
+  .tag {
+    font-size: 12px; color: var(--muted); border: 1px solid var(--line);
+    padding: 3px 10px; border-radius: 99px; background: var(--card);
+  }
+  .badge {
+    display: inline-block; font-size: 11px; font-weight: 600; letter-spacing: 1px;
+    text-transform: uppercase; color: var(--accent); margin-bottom: 2px;
+  }
+
+  .xp { display: grid; grid-template-columns: 160px 1fr; gap: 16px; padding: 20px 0; border-bottom: 1px dashed var(--line); }
+  .xp:last-child { border-bottom: none; }
+  .xp .when { font-size: 13px; color: var(--muted); padding-top: 4px; }
+  .xp h3 { font-size: 18px; font-family: 'Inter', sans-serif; font-weight: 600; }
+  .xp .co { color: var(--accent); font-weight: 400; }
+  .xp ul { margin: 8px 0 0 18px; color: var(--muted); font-size: 14.5px; }
+  .xp li { margin-bottom: 4px; }
+
+  footer { padding: 64px 0 80px; border-top: 1px solid var(--line); text-align: center; }
+  footer h2 { font-size: 36px; margin-bottom: 12px; }
+  footer p { color: var(--muted); margin-bottom: 24px; }
+  footer .email {
+    font-family: 'Newsreader', serif; font-size: 22px; font-style: italic;
+    color: var(--accent); text-decoration: none; border-bottom: 1px solid var(--accent);
+  }
+  footer .socials { margin-top: 36px; font-size: 14px; }
+  footer .socials a { color: var(--muted); text-decoration: none; margin: 0 12px; }
+
+  @media (max-width: 600px) {
+    header h1 { font-size: 38px; }
+    .xp { grid-template-columns: 1fr; gap: 4px; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <nav>
+    <div class="logo">samrat.</div>
+    <div class="links">
+      <a href="#work">Work</a>
+      <a href="#experience">Experience</a>
+      <a href="#contact">Contact</a>
+      <a href="#" class="resume">Resume</a>
+    </div>
+  </nav>
+
+  <header>
+    <h1>Software engineer building <em>voice AI</em> &amp; full-stack systems that ship.</h1>
+    <p>I'm Samrat Malisetti — I design and build scalable web, mobile, and AI applications. Recently: a multilingual voice agent for health-insurance navigation, built in 36 hours at a YC hackathon.</p>
+    <div class="meta">
+      <span>San Francisco Bay Area</span>
+      <span>M.S. Computer Science</span>
+    </div>
+  </header>
+
+  <section id="work">
+    <div class="section-label">Selected Work</div>
+
+    <div class="project">
+      <span class="badge">New · Hackathon @ YC</span>
+      <h3><a href="#">Amparo AI — Multilingual Insurance Voice Agent</a></h3>
+      <p class="desc">Call a phone number, describe your situation in any language, and get a cited, personalized comparison of 4 real health plans in under 2 seconds — 24+ concurrent retrievals per turn, deterministic cost math, and a live dashboard showing every lookup.</p>
+      <div class="tags">
+        <span class="tag">LiveKit</span><span class="tag">Python</span><span class="tag">Moss</span><span class="tag">Next.js</span><span class="tag">MiniMax TTS</span>
+      </div>
+    </div>
+
+    <div class="project">
+      <h3><a href="#">Payment App</a></h3>
+      <p class="desc">Full-stack payments with secure transactions, robust auth, and a clean money-transfer flow.</p>
+      <div class="tags">
+        <span class="tag">React</span><span class="tag">Node.js</span><span class="tag">MongoDB</span><span class="tag">Express</span>
+      </div>
+    </div>
+
+    <div class="project">
+      <h3><a href="#">DCMH Mobile — HackDavis 2024</a></h3>
+      <p class="desc">Cross-platform app for a community housing nonprofit: real-time inventory and donation workflows with low-stock alerts.</p>
+      <div class="tags">
+        <span class="tag">React Native</span><span class="tag">Supabase</span><span class="tag">Expo</span>
+      </div>
+    </div>
+
+    <div class="project">
+      <h3><a href="#">ReactDOM Re-render Implementation</a></h3>
+      <p class="desc">A from-scratch implementation of React's reconciliation and fiber-based rendering — exploring how React actually works.</p>
+      <div class="tags">
+        <span class="tag">Vanilla JS</span><span class="tag">ES6</span>
+      </div>
+    </div>
+  </section>
+
+  <section id="experience">
+    <div class="section-label">Experience</div>
+
+    <div class="xp">
+      <div class="when">Oct 2024 — Jan 2025</div>
+      <div>
+        <h3>Full Stack Engineer <span class="co">· GorgeousTV</span></h3>
+        <ul>
+          <li>Led GCP → Azure migration assessment across VM fleets with Azure Migrate</li>
+          <li>Secured Kubernetes DB connections via cloud-sql-proxy and firewall hardening</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="xp">
+      <div class="when">2022 — 2024</div>
+      <div>
+        <h3>Open Source Contributor <span class="co">· FiguringOut, SuperMemory, Wordcorn</span></h3>
+        <ul>
+          <li>Shipped UI/UX improvements and API integrations across distributed teams</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="xp">
+      <div class="when">2021 — 2022</div>
+      <div>
+        <h3>Software Engineer <span class="co">· ZeMoSo Technologies</span></h3>
+        <ul>
+          <li>Cut GraphQL middleware latency 40% on the Field Squared field-service app</li>
+          <li>Built offline-first features with RealmDB and dynamic JSON-Schema forms</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <footer id="contact">
+    <h2>Let's build something.</h2>
+    <p>Open to full-time roles and interesting collaborations.</p>
+    <a class="email" href="mailto:samratmalisetti@gmail.com">samratmalisetti@gmail.com</a>
+    <div class="socials">
+      <a href="#">GitHub</a> · <a href="#">LinkedIn</a> · <a href="#">Twitter</a>
+    </div>
+  </footer>
+
+</div>
+</body>
+</html>

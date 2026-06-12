@@ -1,22 +1,74 @@
 import React from "react";
+import { motion } from "motion/react";
+import { TerminalWindow, Prompt } from "./TerminalWindow";
 
-const contact = {
-  address: "Los Angeles, California",
-  phone: "+1 (562) 837 6951",
-  email: "samratmalisetti@gmail.com",
-};
+const contacts = [
+  {
+    key: "email",
+    value: "samratmalisetti@gmail.com",
+    href: "mailto:samratmalisetti@gmail.com",
+  },
+  {
+    key: "github",
+    value: "github.com/samratdotm",
+    href: "https://github.com/samratdotm",
+  },
+  {
+    key: "linkedin",
+    value: "linkedin.com/in/samrat-malisetti",
+    href: "https://www.linkedin.com/in/samrat-malisetti/",
+  },
+  {
+    key: "location",
+    value: "California, United States",
+  },
+];
+
+const KEY_PAD = Math.max(...contacts.map((contact) => contact.key.length)) + 1;
 
 export const ContactUs = () => {
   return (
-    <div className="border-b border-neutral-900 pb-20">
-      <h1 className="my-10 text-center text-4xl"> Get in Touch</h1>
-      <div className="text-center tracking-tighter">
-        <p className="my-4">{contact.address}</p>
-        <p className="my-4">{contact.phone}</p>
-        <a href="#" className="border-b">
-          {contact.email}
-        </a>
-      </div>
-    </div>
+    <section className="pb-20">
+      <Prompt id="contact" command="contact --all" />
+      <motion.div
+        initial={{ opacity: 0, y: 10 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-40px" }}
+        transition={{ duration: 0.35 }}
+      >
+        <TerminalWindow>
+          <div className="text-[13.5px] leading-7">
+            {contacts.map((contact) => (
+              <div key={contact.key} className="whitespace-pre-wrap">
+                <span className="text-term-pink">
+                  {`${contact.key}:`.padEnd(KEY_PAD + 1)}
+                </span>
+                {contact.href ? (
+                  <a
+                    href={contact.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-term-green hover:underline"
+                  >
+                    {contact.value}
+                  </a>
+                ) : (
+                  <span className="text-term-ink">{contact.value}</span>
+                )}
+              </div>
+            ))}
+            <div className="whitespace-pre-wrap">
+              <span className="text-term-pink">{"status:".padEnd(KEY_PAD + 1)}</span>
+              <span className="text-term-green">
+                ● Open to new opportunities — Agentic AI Development
+              </span>
+            </div>
+            <div className="mt-4 text-term-faint">
+              # Let&apos;s build something together.
+            </div>
+          </div>
+        </TerminalWindow>
+      </motion.div>
+    </section>
   );
 };

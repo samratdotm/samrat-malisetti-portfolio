@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>OG Card</title>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    width: 1200px; height: 630px;
+    background: #0c1117;
+    font-family: 'JetBrains Mono', monospace;
+    display: flex; align-items: center; justify-content: center;
+    overflow: hidden; position: relative;
+  }
+  body::before {
+    content: ""; position: absolute; inset: 0;
+    background: radial-gradient(700px 400px at 75% -10%, rgba(63,224,129,0.10), transparent);
+  }
+  .term {
+    width: 1000px;
+    background: #11181f; border: 1px solid #1f2a35; border-radius: 18px;
+    box-shadow: 0 20px 80px rgba(0,0,0,0.5);
+    overflow: hidden; position: relative;
+  }
+  .bar {
+    display: flex; align-items: center; gap: 10px;
+    background: #0a0f14; padding: 16px 22px; border-bottom: 1px solid #1f2a35;
+  }
+  .b { width: 16px; height: 16px; border-radius: 50%; }
+  .b1 { background: #ff5f57; } .b2 { background: #febc2e; } .b3 { background: #28c840; }
+  .title { margin-left: 14px; font-size: 17px; color: #7d8b99; }
+  .body { padding: 44px 52px 52px; }
+  .cmd { font-size: 22px; color: #c9d4dd; }
+  .cmd .arrow { color: #3fe081; }
+  .cmd .path { color: #58d6ff; }
+  h1 { font-size: 64px; font-weight: 700; color: #ffffff; margin: 18px 0 10px; letter-spacing: -1px; }
+  .cursor {
+    display: inline-block; width: 26px; height: 56px; background: #3fe081;
+    vertical-align: -6px; margin-left: 8px;
+  }
+  .role { font-size: 26px; color: #ffc66d; margin-bottom: 18px; }
+  .stats { font-size: 21px; color: #7d8b99; }
+  .stats b { color: #3fe081; font-weight: 500; }
+  .url {
+    position: absolute; right: 52px; bottom: 30px;
+    font-size: 17px; color: #4a5a68;
+  }
+</style>
+</head>
+<body>
+  <div class="term">
+    <div class="bar">
+      <span class="b b1"></span><span class="b b2"></span><span class="b b3"></span>
+      <span class="title">samrat@portfolio — zsh</span>
+    </div>
+    <div class="body">
+      <div class="cmd"><span class="arrow">➜ </span><span class="path">~</span> whoami</div>
+      <h1>Samrat Malisetti<span class="cursor"></span></h1>
+      <div class="role">Software Engineer · Agentic AI &amp; LLM Systems</div>
+      <div class="stats">
+        <b>5+ yrs</b> &nbsp;·&nbsp; AI agents serving <b>41M+</b> &nbsp;·&nbsp; <b>●</b> open to opportunities
+      </div>
+    </div>
+    <div class="url">samrat-malisetti-portfolio.vercel.app</div>
+  </div>
+</body>
+</html>

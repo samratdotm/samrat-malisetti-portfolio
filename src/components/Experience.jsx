@@ -1,134 +1,133 @@
 import React from "react";
-import { motion } from "framer-motion";
+import { motion } from "motion/react";
+import { TerminalWindow, Prompt } from "./TerminalWindow";
+
+const formatDuration = (totalMonths) => {
+  const years = Math.floor(totalMonths / 12);
+  const months = totalMonths % 12;
+  const parts = [];
+  if (years > 0) parts.push(`${years} yr${years > 1 ? "s" : ""}`);
+  if (months > 0) parts.push(`${months} mo${months > 1 ? "s" : ""}`);
+  return parts.join(" ");
+};
+
+const monthsSince = (year, month) => {
+  const now = new Date();
+  return (now.getFullYear() - year) * 12 + (now.getMonth() + 1 - month) + 1;
+};
 
 const experiences = [
   {
-    year: "Oct 2024 - Jan 2025",
-    role: "Full Stack Engineer",
-    company: "GorgeousTV Inc.",
-    description:
-      "As an Engineering Consultant at GorgeousTV, I assessed and optimized GCP virtual machines for Azure migration using Azure Migrate, ensuring resource efficiency and seamless compatibility. I secured Kubernetes database connections with cloud-sql-proxy and implemented robust firewall rules in GCP to streamline migration planning. By mapping workloads and dependencies, I facilitated a structured and efficient migration process to Azure.",
-    skills: [
-      "React Native",
-      "Expo",
-      "NodeJs",
-      "TypeScript",
-      "GCP",
-      "Kubernetes",
-      "Azure",
+    year: "2025 — now",
+    duration: formatDuration(monthsSince(2025, 5)), // ADP started May 2025
+    role: "Software Engineer",
+    company: "ADP",
+    highlights:
+      "Production AI agents on ADP Assist, serving 41M+ employees · Strands SDK agent architecture · HITL guardrails + eval framework · TTFT cost −75% via prefix caching · deploys 80min → 12min",
+    tags: [
+      "agentic-ai",
+      "typescript",
+      "strands-sdk",
+      "aws-bedrock",
+      "azure-openai",
+      "langfuse",
+      "kubernetes",
     ],
   },
   {
-    year: "Aug 2022 - Sep 2024",
-    role: "Open Source Contributor",
-    company: "Freelance",
-    description:
-      "Contributed to projects like FiguringOut, SuperMemory, and Wordcorn by enhancing UI/UX, improving functionality, and optimizing performance. Collaborated with distributed teams to integrate APIs seamlessly and proposed codebase optimizations for better maintainability and scalability. Focused on improving application accessibility and reducing redundancy for a refined user experience.",
-    skills: [
-      "React",
-      "NexJs",
-      "NodeJs",
-      "MongoDB",
-      "TypeScript",
-      "Postgres",
-      "PrismaORM",
-      "AWS",
-      "Docker",
-    ],
+    year: "2024 — 2025",
+    duration: "9 mos",
+    role: "Full Stack Engineer (Contract)",
+    company: "GorgeousTV",
+    highlights:
+      "GCP/AWS → Azure migration · Kubernetes + Docker deployments · Prometheus + Grafana observability · cross-cloud IAM",
+    tags: ["gcp", "azure", "aws", "kubernetes", "docker", "prometheus", "grafana"],
   },
   {
-    year: "Jul 2021 - Aug 2022",
+    year: "2022 — 2024",
+    role: "M.S. Computer Science",
+    company: "CSU Long Beach",
+    highlights:
+      "Graduate study + open-source contributions — SuperMemory · Polar · TensorZero",
+    tags: ["react", "nextjs", "typescript", "open-source"],
+  },
+  {
+    year: "2021 — 2022",
+    duration: "1 yr 4 mos",
     role: "Software Engineer",
     company: "ZeMoSo Technologies",
-    description:
-      "Delivered high-quality features for the Field Squared app using Agile methodologies. Implemented dynamic form generation with JSON Schema, offline-first capabilities with RealmDB, and route-finding functionality with Google Maps API. Enhanced GraphQL middleware efficiency, reducing latency by 40%. Focused on creating scalable, user-centric solutions for field service operations.",
-    skills: ["React Native", "Expo", "TypeScript", "GraphQL", "AWS", "XCode"],
+    highlights:
+      "Field Squared field-service app · offline request queue + sync · GraphQL middleware latency −25%",
+    tags: ["react-native", "typescript", "graphql", "realmdb", "jest", "aws"],
   },
   {
-    year: "May 2021 - Jun 2021",
-    role: "Software Engineer Intern",
-    company: "ZeMoSo Technologies",
-    description:
-      "Built a full-stack e-commerce application using Spring Boot and Thymeleaf, implementing CRUD operations and role-based authentication. Enhanced security and code quality using SonarQube, adhering to SOLID principles. Developed scalable backends with dependency injection and robust access control using Spring Security.",
-    skills: [
-      "Java",
-      "JavaScript",
-      "React",
-      "Spring Boot",
-      "Hibernate",
-      "SQL",
-      "Git",
-    ],
-  },
-  {
-    year: "Jan 2020 - Apr 2021",
+    year: "2019 — 2021",
+    duration: "2 yrs 2 mos",
     role: "Software Engineer",
     company: "KeeStep",
-    description:
-      "Architected and developed a College Management Application with ReactJS, NestJS, and MongoDB, creating RESTful APIs and role-based access control. Implemented real-time security protocols using WebSockets and Guards in NestJS. Focused on enhancing scalability and responsiveness through task scheduling and middleware design.",
-    skills: [
-      "React",
-      "TypeScript",
-      "NestJs",
-      "Express",
-      "MongoDB",
-      "AWS",
-      "Git",
-    ],
+    highlights:
+      "College management platform · NestJS REST APIs + RBAC · real-time WebSocket security",
+    tags: ["react", "nestjs", "express", "mongodb", "passportjs", "websockets"],
   },
 ];
 
 export const Experience = () => {
   return (
-    <div className="border-b border-neutral-900 pb-24">
-      <motion.h1
+    <section>
+      <Prompt id="experience" command="cat experience.log" />
+      <motion.div
+        initial={{ opacity: 0, y: 10 }}
         whileInView={{ opacity: 1, y: 0 }}
-        initial={{ opacity: 0, y: -100 }}
-        transition={{ duration: 1.5 }}
-        className="my-20 text-center text-4xl"
+        viewport={{ once: true, margin: "-40px" }}
+        transition={{ duration: 0.35 }}
       >
-        Experience
-      </motion.h1>
-      <div>
-        {experiences.map((experience, index) => (
-          <div key={index} className="mb-8 flex flex-wrap lg:justify-center">
-            <motion.div
-              whileInView={{ opacity: 1, x: 0 }}
-              initial={{ opacity: 0, x: -100 }}
-              transition={{ duration: 1 }}
-              className="w-full lg:w-1/4"
-            >
-              <p className="mb-2 text-sm text-neutral-400">{experience.year}</p>
-            </motion.div>
-            <motion.div
-              whileInView={{ opacity: 1, x: 0 }}
-              initial={{ opacity: 0, x: 100 }}
-              transition={{ duration: 1 }}
-              className="w-full max-w-xl lg:w-3/4"
-            >
-              <h6 className="mb-2 font-semibold">
-                {experience.role} -{" "}
-                <span className="text-sm text-purple-100">
-                  {experience.company}
-                </span>
-              </h6>
-              <p className="flex mb-4 text-neutral-400">
-                {experience.description}
-              </p>
-              <div className="flex flex-wrap">
-                {experience.skills.map((skill, index) => (
-                  <span
-                    key={index}
-                    className="mr-2 mt-4 rounded bg-neutral-900 px-2 py-1 text-sm font-medium text-purple-400"
-                  >
-                    {skill}
-                  </span>
-                ))}
-              </div>
-            </motion.div>
+        <TerminalWindow>
+          <div className="mb-3 text-[13px]">
+            <span className="text-term-faint"># total: </span>
+            <span className="font-bold text-term-green">
+              5+ years of engineering experience
+            </span>
+            <span className="text-term-faint">
+              {" "}
+              — AI agents · full-stack · cloud
+            </span>
           </div>
-        ))}
-      </div>
-    </div>
+          <div className="-my-2 divide-y divide-term-line text-[13px]">
+            {experiences.map((experience) => (
+              <div
+                key={experience.year}
+                className="flex flex-col gap-1 py-3 sm:flex-row sm:gap-4"
+              >
+                <span className="w-[110px] shrink-0 text-term-dim">
+                  <span className="whitespace-nowrap">{experience.year}</span>
+                  {experience.duration && (
+                    <span className="block whitespace-nowrap text-xs text-term-faint">
+                      {experience.duration}
+                    </span>
+                  )}
+                </span>
+                <div>
+                  <span className="font-medium text-white">
+                    {experience.role}
+                  </span>
+                  {experience.company && (
+                    <span className="text-term-amber">
+                      {" "}
+                      @ {experience.company}
+                    </span>
+                  )}
+                  <div className="text-term-dim">{experience.highlights}</div>
+                  {experience.tags && (
+                    <div className="mt-1.5 text-xs text-term-cyan">
+                      {experience.tags.map((tag) => `[${tag}]`).join(" ")}
+                    </div>
+                  )}
+                </div>
+              </div>
+            ))}
+          </div>
+        </TerminalWindow>
+      </motion.div>
+    </section>
   );
 };

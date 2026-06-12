@@ -1,60 +1,63 @@
 import React from "react";
-import profile from "../assets/profile.png";
 import { motion } from "motion/react";
+import { TerminalWindow } from "./TerminalWindow";
 
-const container = (delay) => ({
-  hidden: { x: -100, opacity: 0 },
-  visible: {
-    x: 0,
-    opacity: 1,
-    transition: { duration: 0.5, delay: delay },
-  },
-});
+const navLinks = [
+  { label: "./projects", href: "#projects" },
+  { label: "./experience", href: "#experience" },
+  { label: "./skills", href: "#skills" },
+  { label: "./contact", href: "#contact" },
+];
 
 export const Intro = () => {
   return (
-    <div className="border-b border-neutral-900 pb-4 lg:mb-35">
-      <div className="flex flex-wrap">
-        <div className="w-full lg:w-1/2">
-          <div className="flex flex-col items-center lg:items-start">
-            <motion.h1
-              variants={container(0)}
-              initial="hidden"
-              animate="visible"
-              className="pb-16 text-6xl font-thin tracking-tight lg:mt-16 lg:text-8xl"
-            >
-              Samrat Malisetti
-            </motion.h1>
-            <motion.span
-              variants={container(0.5)}
-              initial="hidden"
-              animate="visible"
-              className="bg-gradient-to-r from-violet-400 via-slate-500 to-purple-500 bg-clip-text text-4xl tracking-tight text-transparent"
-            >
-              Software Engineer
-            </motion.span>
-            <motion.p
-              variants={container(1)}
-              initial="hidden"
-              animate="visible"
-              className="max-w-xl my-1 py-4 font-light tracking-tighter text-center lg:text-left"
-            >{`I am a Software Engineer, driven by a passion for building scalable, secure, and impactful software solutions. My expertise spans Software Development, Full-Stack development, Cloud Technologies, and Open-Source contributions, all tied together by a commitment to clean, maintainable code.
-`}</motion.p>
-          </div>
+    <motion.div
+      initial={{ opacity: 0, y: 12 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.4 }}
+    >
+      <TerminalWindow>
+        <div className="text-sm">
+          <span className="text-term-green">➜ </span>
+          <span className="text-term-cyan">~</span>{" "}
+          <span className="text-term-ink">whoami</span>
         </div>
-        <div className="w-full lg:w-1/2 lg:p-8">
-          <div className="flex justify-center">
-            <motion.img
-              initial={{ x: 100, opacity: 0 }}
-              animate={{ x: 0, opacity: 1 }}
-              transition={{ duration: 1, delay: 1.2 }}
-              className="rounded-lg w-full max-w-sm md:max-w-md lg:max-w-sm xl:max-w-xs h-auto"
-              src={profile}
-              alt="Samrat Malisetti"
-            />
-          </div>
+        <h1 className="mb-1.5 mt-3.5 text-2xl font-bold text-white sm:text-3xl">
+          Samrat Malisetti
+          <span className="ml-1 inline-block h-7 w-[13px] animate-blink bg-term-green align-[-3px]" />
+        </h1>
+        <p className="text-term-amber">
+          Software Engineer @ ADP · Agentic AI &amp; LLM Systems · Voice
+          Agents · Full-Stack
+        </p>
+        <p className="mt-2.5 max-w-xl text-term-dim">
+          <b className="font-medium text-term-ink">
+            5+ years of experience
+          </b>{" "}
+          building systems that ship — production AI agents serving 41M+
+          employees at ADP, plus voice agents, self-building APIs, and mobile
+          apps at hackathons on weekends. M.S. Computer Science.
+        </p>
+        <div className="mt-5 flex flex-wrap gap-3">
+          {navLinks.map((link) => (
+            <a
+              key={link.href}
+              href={link.href}
+              className="rounded-lg border border-term-line px-4 py-1.5 text-[13px] text-term-cyan transition-colors hover:border-term-cyan hover:bg-term-cyan/5"
+            >
+              {link.label}
+            </a>
+          ))}
+          <a
+            href="/resume.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="rounded-lg border border-term-green bg-term-green px-4 py-1.5 text-[13px] font-bold text-term-bg transition-opacity hover:opacity-85"
+          >
+            resume.pdf ↓
+          </a>
         </div>
-      </div>
-    </div>
+      </TerminalWindow>
+    </motion.div>
   );
 };
