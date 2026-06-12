@@ -4,52 +4,51 @@
 <meta charset="UTF-8">
 <title>Samrat Malisetti — Resume</title>
 <style>
-  @page { size: Letter; margin: 0.4in 0.55in; }
+  @page { size: Letter; margin: 0.5in 0.6in; }
   * { margin: 0; padding: 0; box-sizing: border-box; }
   body {
     font-family: Georgia, 'Times New Roman', serif;
-    font-size: 9.3pt;
-    line-height: 1.24;
+    font-size: 10pt;
+    line-height: 1.32;
     color: #1a1a1a;
   }
-  .sans { font-family: Helvetica, Arial, sans-serif; }
 
-  header { text-align: center; margin-bottom: 8pt; }
-  h1 { font-size: 17pt; letter-spacing: 0.5pt; margin-bottom: 2pt; }
+  header { text-align: center; margin-bottom: 10pt; }
+  h1 { font-size: 19pt; letter-spacing: 0.5pt; margin-bottom: 2pt; }
   .headline { font-size: 10.5pt; font-style: italic; color: #333; margin-bottom: 4pt; }
-  .contact-line { font-size: 8.4pt; color: #333; }
+  .contact-line { font-size: 9pt; color: #333; }
   .contact-line a { color: #333; text-decoration: none; }
 
   h2 {
     font-family: Helvetica, Arial, sans-serif;
     font-size: 9.5pt; text-transform: uppercase; letter-spacing: 1.2pt;
-    border-bottom: 1pt solid #999; padding-bottom: 1.5pt;
-    margin: 5.5pt 0 3.5pt;
+    border-bottom: 1pt solid #999; padding-bottom: 2pt;
+    margin: 9pt 0 5pt;
   }
 
-  .job { margin-bottom: 4.5pt; }
+  .job { margin-bottom: 7pt; }
   .job-head { display: flex; justify-content: space-between; align-items: baseline; }
-  .job-title { font-weight: bold; font-size: 10.5pt; }
+  .job-title { font-weight: bold; font-size: 10.8pt; }
   .job-co { font-weight: normal; }
-  .job-dates { font-size: 9pt; color: #444; white-space: nowrap; }
-  .job-sub { font-size: 9pt; font-style: italic; color: #555; margin-bottom: 2pt; }
-  ul { margin: 1.5pt 0 0 14pt; }
-  li { margin-bottom: 1pt; }
+  .job-dates { font-size: 9.2pt; color: #444; white-space: nowrap; }
+  .job-sub { font-size: 9.2pt; font-style: italic; color: #555; margin-bottom: 2pt; }
+  ul { margin: 2.5pt 0 0 15pt; }
+  li { margin-bottom: 2pt; }
   b { font-weight: bold; }
 
   .summary { margin-top: 2pt; }
 
-  .proj { margin-bottom: 5pt; }
+  .proj { margin-bottom: 6.5pt; break-inside: avoid; }
   .proj-head { display: flex; justify-content: space-between; align-items: baseline; }
   .proj-name { font-weight: bold; }
-  .proj-meta { font-size: 9pt; color: #444; }
-  .proj p { margin-top: 1pt; }
+  .proj-meta { font-size: 9.2pt; color: #444; }
+  .proj p { margin-top: 1.5pt; }
 
   .skills-table { width: 100%; border-collapse: collapse; }
-  .skills-table td { padding: 0.5pt 0; vertical-align: top; font-size: 9pt; }
+  .skills-table td { padding: 1.5pt 0; vertical-align: top; font-size: 9.8pt; }
   .skills-table td:first-child {
-    font-family: Helvetica, Arial, sans-serif; font-weight: bold; font-size: 8.5pt;
-    text-transform: uppercase; letter-spacing: 0.5pt; width: 92pt; padding-right: 8pt;
+    font-family: Helvetica, Arial, sans-serif; font-weight: bold; font-size: 8.6pt;
+    text-transform: uppercase; letter-spacing: 0.5pt; width: 98pt; padding-right: 8pt;
   }
 
   .edu-head { display: flex; justify-content: space-between; align-items: baseline; }
@@ -72,7 +71,9 @@
 <h2>Summary</h2>
 <p class="summary">
 Software engineer with <b>5+ years of experience</b>, currently building production AI agent systems at ADP that serve
-<b>41M+ employees across 1.1M clients</b>. Specialty: making LLM agents safe to trust with real actions — guardrails, HITL flows, evals, memory, and observability.
+<b>41M+ employees across 1.1M clients</b>. Specialty: making LLM agents safe to trust with real actions — guardrails,
+human-in-the-loop flows, eval frameworks, durable memory, and observability at every layer. The more important the
+answer, the less the AI should improvise: models interpret the human, deterministic code does the math, evals gate every release.
 </p>
 
 <h2>Experience</h2>
@@ -84,11 +85,14 @@ Software engineer with <b>5+ years of experience</b>, currently building product
   </div>
   <div class="job-sub">Pasadena, CA · Production AI agents on ADP Assist (41M+ employees, 1.1M clients)</div>
   <ul>
-    <li>Core engineer on the <b>WFM Clocking Assistant</b> — a conversational agent for clock in/out, breaks, attestations, and department transfers through natural language, with compliance checks built in.</li>
+    <li>Core engineer on the <b>WFM Clocking Assistant</b> — a conversational agent that lets employees clock in/out, manage breaks, handle attestations, and complete department transfers through natural language, with compliance checks built in.</li>
     <li>Architected the agent on the <b>Strands Agent SDK</b> (agent loop, tool system, steering hooks), routed through ADP's AI Gateway via Azure OpenAI, with an intent orchestrator deciding where each query goes.</li>
-    <li>Designed <b>human-in-the-loop confirmation flows</b> with hash validation, expiry, and audit logging, plus steering guardrails enforcing business rules on payroll-critical actions.</li>
-    <li>Cut time-to-first-token cost by <b>75%</b> with a 2-layer prefix-caching strategy; implemented durable cross-conversation memory with <b>AgentCore Memory on AWS Bedrock</b>.</li>
-    <li>Built an automated <b>eval framework</b> (intent mapping, action parameters, HITL confirmations, multi-turn) gating every release; added per-request <b>Langfuse</b> tracing; cut CI/CD deploys from <b>80 min to 12</b> on Concourse + Kubernetes.</li>
+    <li>Designed <b>human-in-the-loop confirmation flows</b> with hash validation, expiry, and audit logging, plus steering guardrails enforcing business rules — an agent that punches a timecard wrong is a payroll problem, not a chatbot quirk.</li>
+    <li>Implemented durable cross-conversation memory with <b>AgentCore Memory on AWS Bedrock</b>, persisting only what's needed.</li>
+    <li>Cut time-to-first-token cost by <b>75%</b> with a 2-layer prefix-caching strategy (global static + per-session context).</li>
+    <li>Built an automated <b>eval framework</b> that tests agent behavior before anything ships — intent mapping, action parameters, HITL confirmations, steering blocks, and multi-turn conversations.</li>
+    <li>Added production observability with <b>Langfuse</b>: per-request tracing of tool calls, latency, token usage, and cost.</li>
+    <li>Reduced CI/CD deployment time from <b>80 minutes to 12</b> on Concourse + Kubernetes.</li>
   </ul>
 </div>
 
@@ -99,8 +103,11 @@ Software engineer with <b>5+ years of experience</b>, currently building product
   </div>
   <div class="job-sub">Los Angeles, CA · Remote</div>
   <ul>
-    <li>Drove GCP/AWS → Azure migration: VM assessment with Azure Migrate, cost analysis, and VNet/subnet/NSG design.</li>
-    <li>Deployed containerized services on <b>Kubernetes + Docker</b>; automated monitoring and logging with <b>Prometheus + Grafana</b>; managed IAM roles and access policies across all three clouds.</li>
+    <li>Analyzed cloud resource usage across GCP and AWS to identify cost savings and performance improvements as part of an Azure migration initiative; evaluated multi-cloud compatibility with <b>Azure Migrate</b>.</li>
+    <li>Configured Azure Virtual Networks, subnets, and network security groups, mapping existing GCP infrastructure to equivalent Azure architecture for seamless migration.</li>
+    <li>Deployed containerized services with <b>Kubernetes + Docker</b>, implementing scalable deployment strategies to improve reliability and uptime.</li>
+    <li>Automated infrastructure monitoring and logging with <b>Prometheus + Grafana</b>, improving observability and incident response.</li>
+    <li>Managed IAM roles and access policies across GCP, AWS, and Azure, enforcing consistent access control throughout the migration.</li>
   </ul>
 </div>
 
@@ -109,10 +116,11 @@ Software engineer with <b>5+ years of experience</b>, currently building product
     <span class="job-title">Software Engineer <span class="job-co">— ZeMoSo Technologies</span></span>
     <span class="job-dates">May 2021 – Aug 2022</span>
   </div>
-  <div class="job-sub">Hyderabad, India · Field Squared field-service platform</div>
+  <div class="job-sub">Hyderabad, India · Field Squared field-service platform (React Native)</div>
   <ul>
-    <li>Designed an <b>offline request queue</b> with sync-on-reconnect; shipped scheduling, data collection, and workflow features in React Native.</li>
-    <li>Optimized GraphQL middleware, cutting average latency by <b>25%</b>.</li>
+    <li>Designed and implemented an <b>offline request queue</b> so field technicians could keep working without network access, syncing data automatically once connectivity was restored.</li>
+    <li>Enabled enterprises to automate field-service operations with features for task scheduling, data collection, and workflow management; improved UI/UX from direct technician feedback.</li>
+    <li>Optimized GraphQL middleware, cutting average latency and response times by <b>25%</b>.</li>
   </ul>
 </div>
 
@@ -123,7 +131,9 @@ Software engineer with <b>5+ years of experience</b>, currently building product
   </div>
   <div class="job-sub">Hyderabad, India</div>
   <ul>
-    <li>Built a college management platform end-to-end (React, NestJS, MongoDB): REST APIs, <b>role-based access control</b>, PassportJS auth, and real-time WebSocket security with NestJS Guards.</li>
+    <li>Built a college management platform end-to-end with React, NestJS, Express, and MongoDB — RESTful APIs and database schemas designed from scratch.</li>
+    <li>Implemented <b>role-based access control</b> per API using custom middlewares, decorators, and PassportJS authentication for multiple user roles.</li>
+    <li>Used NestJS Guards and <b>WebSockets</b> for real-time security protocols; improved performance with lazy loading, task scheduling, and cookie management.</li>
   </ul>
 </div>
 
@@ -134,15 +144,7 @@ Software engineer with <b>5+ years of experience</b>, currently building product
     <span class="proj-name">Amparo AI — Multilingual Insurance Voice Agent</span>
     <span class="proj-meta">YC Hackathon · 2026</span>
   </div>
-  <p>Phone-call agent that answers health-plan questions in any language: <b>24 parallel retrievals at &lt;100ms</b> per turn → cited 4-plan cost comparison in under 2 seconds, with deterministic cost math and clinical-handoff guardrails.</p>
-</div>
-
-<div class="proj">
-  <div class="proj-head">
-    <span class="proj-name">Specforge — Speak an API Into Existence</span>
-    <span class="proj-meta">Google I/O Hackathon · 2026</span>
-  </div>
-  <p>A Managed Gemini Agent writes a backend from plain English, <b>tests it in its own sandboxed VM until green</b>, and a FastAPI control plane hot-reloads it behind a public URL; the service evolves across conversational turns.</p>
+  <p>Phone-call agent that answers health-plan questions in any language: <b>24 parallel retrievals at &lt;100ms</b> per turn → cited 4-plan cost comparison in under 2 seconds. The LLM never computes a number — deterministic code does the math, every fact is cited to its exact location in the real plan PDF, and a regex-based clinical-handoff guardrail routes medical questions to a doctor. Exposed a "cheapest" plan actually costing <b>$22k more per year</b> due to out-of-network rules; 85 tests. LiveKit · Python · SIP · TTS/STT.</p>
 </div>
 
 <div class="proj">
@@ -150,14 +152,38 @@ Software engineer with <b>5+ years of experience</b>, currently building product
     <span class="proj-name">Engram — Shared Account Brain for Sales Teams</span>
     <span class="proj-meta">Agentic AI Hackathon SF · 2026</span>
   </div>
-  <p>iMessage agent that detects contradictions against a team fact ledger, <b>supersedes stale facts with full lineage</b>, and delivers source-attributed account briefs on demand.</p>
+  <p>iMessage agent that detects contradictions against a team fact ledger, <b>supersedes stale facts with full version lineage</b> (v1→v6), and delivers source-attributed account briefs on demand. Express/TypeScript spine with extract → reconcile → answer pipelines and a live memory panel.</p>
+</div>
+
+<div class="proj">
+  <div class="proj-head">
+    <span class="proj-name">Specforge — Speak an API Into Existence</span>
+    <span class="proj-meta">Google I/O Hackathon · 2026</span>
+  </div>
+  <p>A Managed Gemini Agent writes a backend from plain English, <b>tests it in its own sandboxed VM until green</b>, and a FastAPI control plane hot-reloads it behind a public URL; the service evolves across conversational turns ("now add auth").</p>
+</div>
+
+<div class="proj">
+  <div class="proj-head">
+    <span class="proj-name">Platewise — AI Meal Planner (Android)</span>
+    <span class="proj-meta">2026</span>
+  </div>
+  <p>Built in a weekend, live as a sideloadable APK: generates a personalized <b>7-day plan with zero recipe repeats</b> from cuisines, diet, and pantry via the Claude API, with one-tap recipe swaps and an auto-generated grocery list. React Native · Expo · EAS.</p>
+</div>
+
+<div class="proj">
+  <div class="proj-head">
+    <span class="proj-name">Stock Market Dashboard — Performance Deep Dive</span>
+    <span class="proj-meta">2025</span>
+  </div>
+  <p>Virtualized infinite scroll stays smooth at <b>10,000+ rows</b> (90% fewer DOM nodes, constant memory); deferred-value search and react-query caching cut redundant API calls ~60% and initial load 40%.</p>
 </div>
 
 <h2>Skills</h2>
 <table class="skills-table">
-  <tr><td>Agentic AI</td><td>Strands Agent SDK, AWS Bedrock · AgentCore Memory, Azure OpenAI, Claude API, Gemini, RAG &amp; hybrid retrieval, eval frameworks, Langfuse, HITL guardrails, prompt caching, MCP, voice agents (LiveKit)</td></tr>
+  <tr><td>Agentic AI</td><td>Strands Agent SDK, AWS Bedrock · AgentCore Memory, Azure OpenAI, Claude API, Gemini, multi-agent orchestration, RAG &amp; hybrid retrieval, eval frameworks, LLM observability (Langfuse), HITL guardrails, prompt caching, MCP, voice agents (LiveKit · STT/TTS)</td></tr>
   <tr><td>Languages</td><td>TypeScript, JavaScript, Python, Java, SQL</td></tr>
-  <tr><td>Web &amp; Mobile</td><td>React, Next.js, React Native, Expo, Node.js, NestJS, Express, FastAPI, GraphQL, PostgreSQL, MongoDB</td></tr>
+  <tr><td>Web &amp; Mobile</td><td>React, Next.js, React Native, Expo, Node.js, NestJS, Express, FastAPI, GraphQL, WebRTC, PostgreSQL, MongoDB</td></tr>
   <tr><td>Cloud &amp; DevOps</td><td>AWS, GCP, Azure, Kubernetes, Docker, CI/CD (Concourse), Prometheus, Grafana</td></tr>
 </table>
 
@@ -166,6 +192,9 @@ Software engineer with <b>5+ years of experience</b>, currently building product
   <span><b>M.S. Computer Science</b> — California State University, Long Beach</span>
   <span class="job-dates">2022 – 2024</span>
 </div>
+<ul style="margin-top: 3pt;">
+  <li>Open-source contributions during graduate study: SuperMemory, Polar, TensorZero — UI/UX, API integration, performance.</li>
+</ul>
 
 </body>
 </html>

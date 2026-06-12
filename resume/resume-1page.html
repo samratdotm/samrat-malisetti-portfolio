@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Samrat Malisetti — Resume</title>
+<style>
+  @page { size: Letter; margin: 0.4in 0.55in; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: 9.3pt;
+    line-height: 1.24;
+    color: #1a1a1a;
+  }
+  .sans { font-family: Helvetica, Arial, sans-serif; }
+
+  header { text-align: center; margin-bottom: 8pt; }
+  h1 { font-size: 17pt; letter-spacing: 0.5pt; margin-bottom: 2pt; }
+  .headline { font-size: 10.5pt; font-style: italic; color: #333; margin-bottom: 4pt; }
+  .contact-line { font-size: 8.4pt; color: #333; }
+  .contact-line a { color: #333; text-decoration: none; }
+
+  h2 {
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 9.5pt; text-transform: uppercase; letter-spacing: 1.2pt;
+    border-bottom: 1pt solid #999; padding-bottom: 1.5pt;
+    margin: 5.5pt 0 3.5pt;
+  }
+
+  .job { margin-bottom: 4.5pt; }
+  .job-head { display: flex; justify-content: space-between; align-items: baseline; }
+  .job-title { font-weight: bold; font-size: 10.5pt; }
+  .job-co { font-weight: normal; }
+  .job-dates { font-size: 9pt; color: #444; white-space: nowrap; }
+  .job-sub { font-size: 9pt; font-style: italic; color: #555; margin-bottom: 2pt; }
+  ul { margin: 1.5pt 0 0 14pt; }
+  li { margin-bottom: 1pt; }
+  b { font-weight: bold; }
+
+  .summary { margin-top: 2pt; }
+
+  .proj { margin-bottom: 5pt; }
+  .proj-head { display: flex; justify-content: space-between; align-items: baseline; }
+  .proj-name { font-weight: bold; }
+  .proj-meta { font-size: 9pt; color: #444; }
+  .proj p { margin-top: 1pt; }
+
+  .skills-table { width: 100%; border-collapse: collapse; }
+  .skills-table td { padding: 0.5pt 0; vertical-align: top; font-size: 9pt; }
+  .skills-table td:first-child {
+    font-family: Helvetica, Arial, sans-serif; font-weight: bold; font-size: 8.5pt;
+    text-transform: uppercase; letter-spacing: 0.5pt; width: 92pt; padding-right: 8pt;
+  }
+
+  .edu-head { display: flex; justify-content: space-between; align-items: baseline; }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>SAMRAT MALISETTI</h1>
+  <div class="headline">Software Engineer — Agentic AI &amp; LLM Systems</div>
+  <div class="contact-line">
+    California, United States &nbsp;·&nbsp;
+    <a href="mailto:samratmalisetti@gmail.com">samratmalisetti@gmail.com</a> &nbsp;·&nbsp;
+    <a href="https://www.linkedin.com/in/samrat-malisetti/">linkedin.com/in/samrat-malisetti</a> &nbsp;·&nbsp;
+    <a href="https://github.com/samratdotm">github.com/samratdotm</a> &nbsp;·&nbsp;
+    <a href="https://samratmalisetti.dev">samratmalisetti.dev</a>
+  </div>
+</header>
+
+<h2>Summary</h2>
+<p class="summary">
+Software engineer with <b>5+ years of experience</b>, currently building production AI agent systems at ADP that serve
+<b>41M+ employees across 1.1M clients</b>. Specialty: making LLM agents safe to trust with real actions — guardrails, HITL flows, evals, memory, and observability.
+</p>
+
+<h2>Experience</h2>
+
+<div class="job">
+  <div class="job-head">
+    <span class="job-title">Software Engineer <span class="job-co">— ADP</span></span>
+    <span class="job-dates">May 2025 – Present</span>
+  </div>
+  <div class="job-sub">Pasadena, CA · Production AI agents on ADP Assist (41M+ employees, 1.1M clients)</div>
+  <ul>
+    <li>Core engineer on the <b>WFM Clocking Assistant</b> — a conversational agent for clock in/out, breaks, attestations, and department transfers through natural language, with compliance checks built in.</li>
+    <li>Architected the agent on the <b>Strands Agent SDK</b> (agent loop, tool system, steering hooks), routed through ADP's AI Gateway via Azure OpenAI, with an intent orchestrator deciding where each query goes.</li>
+    <li>Designed <b>human-in-the-loop confirmation flows</b> with hash validation, expiry, and audit logging, plus steering guardrails enforcing business rules on payroll-critical actions.</li>
+    <li>Cut time-to-first-token cost by <b>75%</b> with a 2-layer prefix-caching strategy; implemented durable cross-conversation memory with <b>AgentCore Memory on AWS Bedrock</b>.</li>
+    <li>Built an automated <b>eval framework</b> (intent mapping, action parameters, HITL confirmations, multi-turn) gating every release; added per-request <b>Langfuse</b> tracing; cut CI/CD deploys from <b>80 min to 12</b> on Concourse + Kubernetes.</li>
+  </ul>
+</div>
+
+<div class="job">
+  <div class="job-head">
+    <span class="job-title">Full Stack Engineer (Contract) <span class="job-co">— GorgeousTV</span></span>
+    <span class="job-dates">Jun 2024 – Feb 2025</span>
+  </div>
+  <div class="job-sub">Los Angeles, CA · Remote</div>
+  <ul>
+    <li>Drove GCP/AWS → Azure migration: VM assessment with Azure Migrate, cost analysis, and VNet/subnet/NSG design.</li>
+    <li>Deployed containerized services on <b>Kubernetes + Docker</b>; automated monitoring and logging with <b>Prometheus + Grafana</b>; managed IAM roles and access policies across all three clouds.</li>
+  </ul>
+</div>
+
+<div class="job">
+  <div class="job-head">
+    <span class="job-title">Software Engineer <span class="job-co">— ZeMoSo Technologies</span></span>
+    <span class="job-dates">May 2021 – Aug 2022</span>
+  </div>
+  <div class="job-sub">Hyderabad, India · Field Squared field-service platform</div>
+  <ul>
+    <li>Designed an <b>offline request queue</b> with sync-on-reconnect; shipped scheduling, data collection, and workflow features in React Native.</li>
+    <li>Optimized GraphQL middleware, cutting average latency by <b>25%</b>.</li>
+  </ul>
+</div>
+
+<div class="job">
+  <div class="job-head">
+    <span class="job-title">Software Engineer <span class="job-co">— KeeStep</span></span>
+    <span class="job-dates">Jan 2019 – Feb 2021</span>
+  </div>
+  <div class="job-sub">Hyderabad, India</div>
+  <ul>
+    <li>Built a college management platform end-to-end (React, NestJS, MongoDB): REST APIs, <b>role-based access control</b>, PassportJS auth, and real-time WebSocket security with NestJS Guards.</li>
+  </ul>
+</div>
+
+<h2>Selected Projects</h2>
+
+<div class="proj">
+  <div class="proj-head">
+    <span class="proj-name">Amparo AI — Multilingual Insurance Voice Agent</span>
+    <span class="proj-meta">YC Hackathon · 2026</span>
+  </div>
+  <p>Phone-call agent that answers health-plan questions in any language: <b>24 parallel retrievals at &lt;100ms</b> per turn → cited 4-plan cost comparison in under 2 seconds, with deterministic cost math and clinical-handoff guardrails.</p>
+</div>
+
+<div class="proj">
+  <div class="proj-head">
+    <span class="proj-name">Specforge — Speak an API Into Existence</span>
+    <span class="proj-meta">Google I/O Hackathon · 2026</span>
+  </div>
+  <p>A Managed Gemini Agent writes a backend from plain English, <b>tests it in its own sandboxed VM until green</b>, and a FastAPI control plane hot-reloads it behind a public URL; the service evolves across conversational turns.</p>
+</div>
+
+<div class="proj">
+  <div class="proj-head">
+    <span class="proj-name">Engram — Shared Account Brain for Sales Teams</span>
+    <span class="proj-meta">Agentic AI Hackathon SF · 2026</span>
+  </div>
+  <p>iMessage agent that detects contradictions against a team fact ledger, <b>supersedes stale facts with full lineage</b>, and delivers source-attributed account briefs on demand.</p>
+</div>
+
+<h2>Skills</h2>
+<table class="skills-table">
+  <tr><td>Agentic AI</td><td>Strands Agent SDK, AWS Bedrock · AgentCore Memory, Azure OpenAI, Claude API, Gemini, RAG &amp; hybrid retrieval, eval frameworks, Langfuse, HITL guardrails, prompt caching, MCP, voice agents (LiveKit)</td></tr>
+  <tr><td>Languages</td><td>TypeScript, JavaScript, Python, Java, SQL</td></tr>
+  <tr><td>Web &amp; Mobile</td><td>React, Next.js, React Native, Expo, Node.js, NestJS, Express, FastAPI, GraphQL, PostgreSQL, MongoDB</td></tr>
+  <tr><td>Cloud &amp; DevOps</td><td>AWS, GCP, Azure, Kubernetes, Docker, CI/CD (Concourse), Prometheus, Grafana</td></tr>
+</table>
+
+<h2>Education</h2>
+<div class="edu-head">
+  <span><b>M.S. Computer Science</b> — California State University, Long Beach</span>
+  <span class="job-dates">2022 – 2024</span>
+</div>
+
+</body>
+</html>
