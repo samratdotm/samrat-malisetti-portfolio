@@ -27,16 +27,17 @@ export const Intro = () => {
           <span className="ml-1 inline-block h-7 w-[13px] animate-blink bg-term-green align-[-3px]" />
         </h1>
         <p className="text-term-amber">
-          Software Engineer @ ADP · Agentic AI &amp; LLM Systems · Voice
-          Agents · Full-Stack
+          Software Engineer @ ADP · Agentic AI &amp; LLM Systems · RL
+          Environments + Open-Model Fine-Tuning (RFT/GRPO) · Voice Agents
         </p>
         <p className="mt-2.5 max-w-xl text-term-dim">
           <b className="font-medium text-term-ink">
             5+ years of experience
           </b>{" "}
           building systems that ship — production AI agents serving 41M+
-          employees at ADP, plus voice agents, self-building APIs, and mobile
-          apps at hackathons on weekends. M.S. Computer Science.
+          employees at ADP, plus voice agents, RL-trained agents,
+          self-building APIs, and mobile apps at hackathons on weekends. M.S.
+          Computer Science.
         </p>
         <div className="mt-5 flex flex-wrap gap-3">
           {navLinks.map((link) => (

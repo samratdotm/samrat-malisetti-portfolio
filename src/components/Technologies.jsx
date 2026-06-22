@@ -9,6 +9,9 @@ const skillGroups = [
     skills: [
       "LLM Agents (Strands SDK)",
       "Multi-Agent Orchestration",
+      "RL Environments (HUD)",
+      "Reinforcement Fine-Tuning (GRPO/RFT)",
+      "Open-Model Training (Qwen · Tinker)",
       "AWS Bedrock · AgentCore Memory",
       "Claude API",
       "Azure OpenAI",
@@ -16,10 +19,11 @@ const skillGroups = [
       "Voice Agents (LiveKit · STT/TTS)",
       "RAG & Hybrid Retrieval",
       "Eval Frameworks",
+      "LLM-as-Judge Evals",
       "LLM Observability (Langfuse)",
       "HITL Guardrails",
       "Prompt Caching",
-      "MCP",
+      "MCP / FastMCP",
     ],
   },
   {
