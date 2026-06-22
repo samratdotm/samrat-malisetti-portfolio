@@ -34,7 +34,8 @@ const projects = [
   },
   {
     name: "amparo-ai",
-    meta: "YC hackathon · 2026",
+    featured: true,
+    meta: "YC × Moss Conversational AI hackathon · 2026",
     description: (
       <>
         Multilingual voice agent for health insurance. Call a phone number,
