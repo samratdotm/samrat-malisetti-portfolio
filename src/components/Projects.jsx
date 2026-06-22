@@ -4,8 +4,36 @@ import { Prompt } from "./TerminalWindow";
 
 const projects = [
   {
-    name: "amparo-ai",
+    name: "agent-inc",
     featured: true,
+    meta: "YC × HUD RL hackathon · 2026",
+    description: (
+      <>
+        An RL environment that teaches a model to{" "}
+        <b className="font-medium text-term-ink">run a business</b> — read the
+        brief, research, make a truthful priced offer, ship a deliverable —
+        scored by a hybrid reward (70% deterministic + 30% LLM judge) that{" "}
+        <b className="font-medium text-term-ink">
+          only pays for honest, complete work
+        </b>
+        . RL-trained an open model (Qwen3.5-4B, on-policy GRPO){" "}
+        <b className="font-medium text-term-ink">0.327 → 0.647</b> — nearly
+        doubling and closing ~half the gap to a frontier model, on 24 scenarios
+        it never trained on.
+      </>
+    ),
+    tags: ["python", "hud", "grpo", "fastmcp", "qwen", "claude-api"],
+    links: [
+      { href: "https://agent-inc-three.vercel.app", label: "live demo ↗" },
+      { href: "https://github.com/samratdotm/agent-inc", label: "source ↗" },
+    ],
+    media: {
+      src: "/media/agent-inc-demo.gif",
+      alt: "Agent Inc. RL training result — the open model's reward climbing from a 0.327 baseline to 0.647 after GRPO training, shown as a curve and a before/after level-up card",
+    },
+  },
+  {
+    name: "amparo-ai",
     meta: "YC hackathon · 2026",
     description: (
       <>
