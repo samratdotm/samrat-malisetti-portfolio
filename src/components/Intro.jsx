@@ -49,7 +49,7 @@ export const Intro = () => {
             </a>
           ))}
           <a
-            href="/resume.pdf"
+            href="/resume.pdf?v=3"
             target="_blank"
             rel="noopener noreferrer"
             className="rounded-lg border border-term-green bg-term-green px-4 py-1.5 text-[13px] font-bold text-term-bg transition-opacity hover:opacity-85"
